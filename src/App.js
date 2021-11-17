@@ -1,8 +1,13 @@
+import { Routes, Route } from 'react-router-dom';
+import Home from './containers/home';
+import Details from './containers/details';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <Routes>
+      <Route path='/' index element={<Home />} />
+      <Route path='/movie-list/:id' element={<Details />} />
+    </Routes>
   );
 }
 
