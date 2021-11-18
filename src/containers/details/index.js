@@ -1,7 +1,18 @@
 import { useParams, Link } from 'react-router-dom';
 import { useGetMovieDetailQuery } from '../../reducers/movie';
 import { MdOutlineArrowBack, MdEmojiPeople } from 'react-icons/md';
+import Lottie from 'react-lottie';
+import animationData from '../../assets/lottie/paper-lottie.json';
 import { useEffect, useState } from 'react';
+
+const defaultOptions = {
+  loop: true,
+  autoplay: true,
+  animationData: animationData,
+  rendererSettings: {
+    preserveAspectRatio: 'xMidYMid slice',
+  },
+};
 
 const Details = () => {
   const location = useParams();
@@ -19,7 +30,10 @@ const Details = () => {
   return (
     <div className='min-h-screen w-full flex'>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className='min-h-screen w-full flex flex-col items-center justify-center'>
+          <Lottie options={defaultOptions} height={400} width={400} />
+          <p>Loading ...</p>
+        </div>
       ) : (
         <>
           <div className='w-3/5 min-h-screen max-h-screen overflow-hidden flex'>
