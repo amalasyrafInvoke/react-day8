@@ -2,7 +2,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useGetMovieDetailQuery } from '../../reducers/movie';
 import { MdOutlineArrowBack, MdEmojiPeople } from 'react-icons/md';
 import { useEffect, useState } from 'react';
-import imageNA from '../../assets/img/not-available.jpg';
 
 const Details = () => {
   const location = useParams();
