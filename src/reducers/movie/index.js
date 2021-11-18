@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 export const moviesApi = createApi({
   reducerPath: 'moviesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://www.omdbapi.com/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'https://www.omdbapi.com/' }),
   endpoints: (builder) => ({
     getMoviesByName: builder.query({
       query: (name) => ({
