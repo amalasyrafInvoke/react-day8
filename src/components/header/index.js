@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaSearch } from 'react-icons/fa';
+import { MdLocalMovies } from 'react-icons/md';
 import { addSearch } from '../../reducers/search';
 
 const Header = () => {
@@ -17,13 +18,14 @@ const Header = () => {
   };
 
   return (
-    <header className='h-20 w-full bg-yellow-200 flex items-center justify-center p-4'>
-      <form className='flex w-full items-center justify-center p-4' onSubmit={handleSearchClick}>
+    <header className='h-32 w-full bg-green-700 flex items-center justify-center p-4'>
+      <form className='flex w-full items-center justify-center p-4 space-x-8' onSubmit={handleSearchClick}>
+        <MdLocalMovies size={35} />
         <input
           type='text'
           placeholder={`Search movie here`}
           id='search'
-          className='p-2 w-1/2 rounded-md mx-2 text-center'
+          className='p-2 w-1/2 rounded-md mx-2 text-center shadow-md'
           ref={(el) => (searchInput = el)}
         />
         <button

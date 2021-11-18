@@ -4,23 +4,26 @@ import Movie from '../movie';
 
 const MovieList = () => {
   const searchValue = useSelector((state) => state.search.value);
-  const { data, error, isLoading, isSuccess, isError } =
-    useGetMoviesByNameQuery(searchValue);
-  // const { data: data2 } = useGetPokemonByNameQuery('pikachu');
+  const { data, isLoading } = useGetMoviesByNameQuery(searchValue);
+
+  console.log(data);
 
   return (
-    <div className='w-full min-h-screen bg-indigo-200 py-6 px-8'>
-      {data ? (
-        <>
-          <h1 className='text-3xl text-black font-semibold text-center'>
-            Movies List
-          </h1>
-          {data.Search.map((item) => (
-            <Movie data={item} key={item.imdbID} />
-          ))}
-        </>
+    <div className='w-full min-h-screen bg-green-700 py-6 px-8 flex flex-col items-center justify-start'>
+      {!isLoading ? (
+        data.Response === 'True' ? (
+          <>
+            <div className='w-full flex items-center justify-center flex-wrap'>
+              {data.Search.map((item) => (
+                <Movie data={item} key={item.imdbID} />
+              ))}
+            </div>
+          </>
+        ) : (
+          <p>Error: {data.Error}</p>
+        )
       ) : (
-        <p>no data...</p>
+        <p>Loading data..</p>
       )}
     </div>
   );

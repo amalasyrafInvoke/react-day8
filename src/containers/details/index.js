@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useGetMovieDetailQuery } from '../../reducers/movie';
 import { MdOutlineArrowBack, MdEmojiPeople } from 'react-icons/md';
 import { useEffect, useState } from 'react';
+import imageNA from '../../assets/img/not-available.jpg';
 
 const Details = () => {
   const location = useParams();
@@ -23,14 +24,22 @@ const Details = () => {
       ) : (
         <>
           <div className='w-3/5 min-h-screen max-h-screen overflow-hidden flex'>
-            <div
-              className='w-full min-h-screen bg-no-repeat bg-cover bg-center filter brightness-50 blur transform scale-105'
-              style={{ backgroundImage: `url(${data.Poster})`, }}
-            ></div>
-            <div
-              className='w-1/2 min-h-screen bg-no-repeat bg-contain absolute transform translate-x-1/4'
-              style={{ backgroundImage: `url(${data.Poster})` }}
-            ></div>
+            {data.Poster === 'N/A' ? (
+              <div className='min-h-screen w-full bg-green-200 flex items-center justify-center'>
+                <p>Image Not Available.</p>
+              </div>
+            ) : (
+              <>
+                <div
+                  className='w-full min-h-screen bg-no-repeat bg-cover bg-center filter brightness-50 blur transform scale-105'
+                  style={{ backgroundImage: `url(${data.Poster})` }}
+                ></div>
+                <div
+                  className='w-1/2 min-h-screen bg-no-repeat bg-contain absolute transform translate-x-1/4'
+                  style={{ backgroundImage: `url(${data.Poster})` }}
+                ></div>
+              </>
+            )}
           </div>
 
           {/* <img className='min-h-screen w-full' src={data.Poster} alt={data.Title} /> */}
